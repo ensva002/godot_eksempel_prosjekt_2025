@@ -44,3 +44,5 @@ shift={
 2d_physics/layer_4="Ground"
 2d_physics/layer_5="Ghost"
 2d_physics/layer_6="Items"
+2d_physics/layer_7="coins"
+2d_physics/layer_8="Damage"

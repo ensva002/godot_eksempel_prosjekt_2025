@@ -9,6 +9,7 @@ func _ready() -> void:
 	
 	 
 func on_score_updated(new_score: int) -> void:
+	$Front/Target.text = str(target - new_score)
 	if new_score >= target:
 		$CollisionShape2D.set_deferred("disabled", false)
 		$Front.visible = false

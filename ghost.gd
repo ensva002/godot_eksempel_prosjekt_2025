@@ -19,10 +19,13 @@ func _physics_process(delta: float) -> void:
 		$Sprite2D.flip_h = !$Sprite2D.flip_h
 		
 	if damaged && !indestructable:
+		var n = 0
 		for i in range(coins):
 			var instance = dropCoin.instantiate()
-			instance.global_position = global_position
+			instance.global_position = Vector2(global_position.x+n, global_position.y+abs(n))
 			get_tree().current_scene.add_child(instance)
+			n += 1
+			n *= -1
 		queue_free()
 
 
@@ -30,16 +33,14 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
 		emit_signal("player_hurt")
 	
-
-	
-	if body.is_in_group("damage"):
-		damaged = true
 		
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	if area.is_in_group("coins"):
 		area.queue_free()
 		coins += 1
-	
+		
+	if area.is_in_group("damage"):
+		damaged = true
 
 func _on_area_2d_body_exited(body: Node2D) -> void:
 		if body.is_in_group("damage"):

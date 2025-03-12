@@ -1,0 +1,66 @@
+[gd_scene load_steps=10 format=3 uid="uid://bu5p25u1ku0tp"]
+
+[ext_resource type="Script" path="res://explosion.gd" id="1_3p3x4"]
+[ext_resource type="Texture2D" uid="uid://dsjo8d32v85hg" path="res://art/tank_explosion.png" id="1_yfamc"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0kqjw"]
+radius = 52.0096
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yc53l"]
+atlas = ExtResource("1_yfamc")
+region = Rect2(0, 0, 129, 131)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_osugp"]
+atlas = ExtResource("1_yfamc")
+region = Rect2(129, 0, 129, 131)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xo4g6"]
+atlas = ExtResource("1_yfamc")
+region = Rect2(258, 0, 129, 131)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o0dct"]
+atlas = ExtResource("1_yfamc")
+region = Rect2(387, 0, 129, 131)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fgw2t"]
+atlas = ExtResource("1_yfamc")
+region = Rect2(516, 0, 129, 131)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4xjt4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yc53l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_osugp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xo4g6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o0dct")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fgw2t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fgw2t")
+}],
+"loop": false,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="Explosion" type="Area2D" groups=["damage"]]
+collision_layer = 128
+collision_mask = 0
+script = ExtResource("1_3p3x4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_0kqjw")
+debug_color = Color(1, 0.196887, 0.264721, 0.42)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_4xjt4")
+autoplay = "default"
