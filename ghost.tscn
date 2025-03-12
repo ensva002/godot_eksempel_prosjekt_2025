@@ -1,0 +1,108 @@
+[gd_scene load_steps=10 format=3 uid="uid://d1vholdr0aobt"]
+
+[ext_resource type="Script" path="res://ghost.gd" id="1_j1my0"]
+[ext_resource type="Texture2D" uid="uid://bcv2ljqrlbidp" path="res://art/enemies_spritesheet.png" id="1_k1m16"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_u88vp"]
+radius = 29.0
+height = 100.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_x6gdt"]
+radius = 25.0
+height = 90.0
+
+[sub_resource type="Animation" id="Animation_b18yl"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_ilalr"]
+resource_name = "fade"
+length = 5.0
+loop_mode = 1
+
+[sub_resource type="Animation" id="Animation_nny00"]
+resource_name = "float"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(6, -0.25, 0, 0.25, 0, -6, -0.25, 0, 0.25, 0, 6, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1, 2)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gulym"]
+_data = {
+"RESET": SubResource("Animation_b18yl"),
+"fade": SubResource("Animation_ilalr"),
+"float": SubResource("Animation_nny00")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ui8q0"]
+radius = 21.0238
+
+[node name="Ghost" type="CharacterBody2D" groups=["enemy"]]
+collision_layer = 256
+collision_mask = 4
+script = ExtResource("1_j1my0")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.796078)
+texture = ExtResource("1_k1m16")
+region_enabled = true
+region_rect = Rect2(254.598, 0, 48.8889, 91.5451)
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_mask = 43
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CapsuleShape2D_u88vp")
+debug_color = Color(0.706712, 0.402484, 0.719283, 0.42)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_x6gdt")
+
+[node name="float" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_gulym")
+}
+autoplay = "float"
+
+[node name="inwall" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="inwall"]
+shape = SubResource("CircleShape2D_ui8q0")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="body_entered" from="inwall" to="." method="_on_inwall_body_entered"]
+[connection signal="body_exited" from="inwall" to="." method="_on_inwall_body_exited"]

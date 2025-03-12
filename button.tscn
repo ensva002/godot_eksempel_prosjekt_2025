@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://4niwx2gmpbbs"]
+
+[ext_resource type="Script" path="res://button.gd" id="1_4f8uy"]
+[ext_resource type="Texture2D" uid="uid://cfx7g5bbn3duh" path="res://art/spritesheet_tiles.png" id="1_vp4pd"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fjgvd"]
+radius = 45.0111
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wqaaj"]
+size = Vector2(123, 30)
+
+[node name="Button" type="Area2D"]
+collision_layer = 2
+collision_mask = 33
+script = ExtResource("1_4f8uy")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_vp4pd")
+region_enabled = true
+region_rect = Rect2(128, 1024, 128, 128)
+region_filter_clip_enabled = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 23)
+shape = SubResource("CircleShape2D_fjgvd")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0.5, 49)
+shape = SubResource("RectangleShape2D_wqaaj")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

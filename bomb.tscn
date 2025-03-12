@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://2yi1v8smhlgk"]
+
+[ext_resource type="Script" path="res://bomb.gd" id="1_45qa6"]
+[ext_resource type="Texture2D" uid="uid://cfx7g5bbn3duh" path="res://art/spritesheet_tiles.png" id="1_il536"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ej2ts"]
+radius = 50.04
+
+[node name="RigidBody2D" type="RigidBody2D" groups=["damage"]]
+collision_layer = 32
+collision_mask = 44
+script = ExtResource("1_45qa6")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+position = Vector2(-2, -9)
+texture = ExtResource("1_il536")
+region_enabled = true
+region_rect = Rect2(0, 1412, 126, 126)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ej2ts")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

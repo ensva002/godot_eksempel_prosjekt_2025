@@ -1,0 +1,56 @@
+[gd_scene load_steps=5 format=3 uid="uid://2loixx1jm667"]
+
+[ext_resource type="Script" path="res://door.gd" id="1_cwh2h"]
+[ext_resource type="Texture2D" uid="uid://cfx7g5bbn3duh" path="res://art/spritesheet_tiles.png" id="2_dih6n"]
+[ext_resource type="Texture2D" uid="uid://cnlkt02y2516j" path="res://art/spritesheet_items.png" id="3_nr5o6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_opb2o"]
+size = Vector2(94, 156)
+
+[node name="Door" type="Area2D"]
+z_index = -20
+z_as_relative = false
+collision_layer = 0
+script = ExtResource("1_cwh2h")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 23)
+shape = SubResource("RectangleShape2D_opb2o")
+
+[node name="Clopen" type="Sprite2D" parent="."]
+texture = ExtResource("2_dih6n")
+region_enabled = true
+region_rect = Rect2(384, 1334, 128, 202)
+
+[node name="Front" type="Node2D" parent="."]
+
+[node name="Coin" type="Sprite2D" parent="Front"]
+position = Vector2(0, -29)
+texture = ExtResource("3_nr5o6")
+region_enabled = true
+region_rect = Rect2(288, 288, 64, 64)
+
+[node name="Target" type="Label" parent="Front"]
+offset_left = -196.0
+offset_right = 197.0
+offset_bottom = 138.0
+theme_override_colors/font_color = Color(0.584314, 0.682353, 0.678431, 1)
+theme_override_colors/font_outline_color = Color(0.67451, 0.752941, 0.756863, 1)
+theme_override_constants/outline_size = 20
+theme_override_font_sizes/font_size = 66
+text = "0"
+horizontal_alignment = 1
+
+[node name="Label" type="Label" parent="."]
+visible = false
+offset_left = -43.0
+offset_top = -202.0
+offset_right = 42.0
+offset_bottom = -64.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 15
+theme_override_font_sizes/font_size = 101
+text = "↑"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
