@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://bt6wkj4xsqxd1"]
+
+[ext_resource type="Texture2D" uid="uid://cfx7g5bbn3duh" path="res://art/spritesheet_tiles.png" id="1_k2mfp"]
+
+[sub_resource type="GDScript" id="GDScript_feuot"]
+script/source = "extends RigidBody2D
+
+
+func _on_area_2d_area_entered(area: Area2D) -> void:
+	print(area.name)
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ipcd0"]
+
+[node name="box" type="RigidBody2D" groups=["destructable"]]
+collision_layer = 8
+collision_mask = 137
+can_sleep = false
+lock_rotation = true
+script = SubResource("GDScript_feuot")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(6.30505, 6.30505)
+shape = SubResource("RectangleShape2D_ipcd0")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_k2mfp")
+region_enabled = true
+region_rect = Rect2(0, 512, 128, 128)

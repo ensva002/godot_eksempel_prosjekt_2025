@@ -114,7 +114,7 @@ animations = [{
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_o1vqm"]
 radius = 35.0
-height = 132.0
+height = 118.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4xw5d"]
 atlas = ExtResource("3_xvtqb")
@@ -131,7 +131,7 @@ animation = &"jump"
 autoplay = "walk"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -13)
+position = Vector2(0, -8)
 shape = SubResource("CapsuleShape2D_o1vqm")
 
 [node name="Charge" type="TextureProgressBar" parent="."]

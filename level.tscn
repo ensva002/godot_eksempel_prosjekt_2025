@@ -1,8 +1,8 @@
-[gd_scene load_steps=15 format=4 uid="uid://6n1vbgqffyej"]
+[gd_scene load_steps=13 format=4 uid="uid://6n1vbgqffyej"]
 
 [ext_resource type="Texture2D" uid="uid://ci1wj1a8lrq7k" path="res://art/blue_land.png" id="1_6vilu"]
-[ext_resource type="Texture2D" uid="uid://bophuretwuye1" path="res://art/spritesheet_ground.png" id="1_wwks6"]
 [ext_resource type="PackedScene" uid="uid://3mltdnhpmovc" path="res://player.tscn" id="2_l1t52"]
+[ext_resource type="TileSet" uid="uid://bkfor8n0fv7g0" path="res://ground_tileset.tres" id="2_vg8f4"]
 [ext_resource type="PackedScene" uid="uid://d1vholdr0aobt" path="res://ghost.tscn" id="4_dmr7q"]
 [ext_resource type="PackedScene" uid="uid://bo8xwnkv6onj0" path="res://chain.tscn" id="5_ecxuf"]
 [ext_resource type="PackedScene" uid="uid://4niwx2gmpbbs" path="res://button.tscn" id="6_tgueh"]
@@ -11,129 +11,6 @@
 [ext_resource type="Script" path="res://value.gd" id="9_8u7to"]
 [ext_resource type="PackedScene" uid="uid://c3bu6oxk0ppcx" path="res://platform.tscn" id="10_dksuv"]
 [ext_resource type="PackedScene" uid="uid://2loixx1jm667" path="res://door.tscn" id="11_jd8de"]
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0rnvx"]
-texture = ExtResource("1_wwks6")
-texture_region_size = Vector2i(128, 128)
-0:0/0 = 0
-1:0/0 = 0
-1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
-2:0/0 = 0
-3:0/0 = 0
-4:0/0 = 0
-5:0/0 = 0
-6:0/0 = 0
-0:1/0 = 0
-0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
-1:1/0 = 0
-2:1/0 = 0
-3:1/0 = 0
-4:1/0 = 0
-5:1/0 = 0
-6:1/0 = 0
-0:2/0 = 0
-1:2/0 = 0
-2:2/0 = 0
-3:2/0 = 0
-4:2/0 = 0
-5:2/0 = 0
-6:2/0 = 0
-0:3/0 = 0
-1:3/0 = 0
-2:3/0 = 0
-3:3/0 = 0
-4:3/0 = 0
-5:3/0 = 0
-6:3/0 = 0
-0:4/0 = 0
-1:4/0 = 0
-2:4/0 = 0
-3:4/0 = 0
-4:4/0 = 0
-5:4/0 = 0
-6:4/0 = 0
-0:5/0 = 0
-1:5/0 = 0
-2:5/0 = 0
-3:5/0 = 0
-4:5/0 = 0
-5:5/0 = 0
-6:5/0 = 0
-0:6/0 = 0
-1:6/0 = 0
-2:6/0 = 0
-3:6/0 = 0
-4:6/0 = 0
-5:6/0 = 0
-6:6/0 = 0
-0:7/0 = 0
-1:7/0 = 0
-2:7/0 = 0
-3:7/0 = 0
-4:7/0 = 0
-4:7/0/physics_layer_1/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
-5:7/0 = 0
-6:7/0 = 0
-0:8/0 = 0
-1:8/0 = 0
-2:8/0 = 0
-3:8/0 = 0
-4:8/0 = 0
-5:8/0 = 0
-6:8/0 = 0
-0:9/0 = 0
-1:9/0 = 0
-2:9/0 = 0
-3:9/0 = 0
-4:9/0 = 0
-5:9/0 = 0
-6:9/0 = 0
-0:10/0 = 0
-1:10/0 = 0
-2:10/0 = 0
-3:10/0 = 0
-4:10/0 = 0
-5:10/0 = 0
-6:10/0 = 0
-0:11/0 = 0
-1:11/0 = 0
-2:11/0 = 0
-3:11/0 = 0
-4:11/0 = 0
-5:11/0 = 0
-6:11/0 = 0
-0:12/0 = 0
-1:12/0 = 0
-2:12/0 = 0
-3:12/0 = 0
-4:12/0 = 0
-5:12/0 = 0
-0:13/0 = 0
-1:13/0 = 0
-2:13/0 = 0
-3:13/0 = 0
-4:13/0 = 0
-5:13/0 = 0
-0:14/0 = 0
-1:14/0 = 0
-2:14/0 = 0
-3:14/0 = 0
-4:14/0 = 0
-5:14/0 = 0
-0:15/0 = 0
-1:15/0 = 0
-2:15/0 = 0
-3:15/0 = 0
-4:15/0 = 0
-5:15/0 = 0
-
-[sub_resource type="TileSet" id="TileSet_67n3t"]
-tile_size = Vector2i(128, 128)
-physics_layer_0/collision_layer = 8
-physics_layer_0/collision_mask = 0
-physics_layer_1/collision_layer = 12
-physics_layer_1/collision_mask = 0
-sources/1 = SubResource("TileSetAtlasSource_0rnvx")
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7o16q"]
 atlas = ExtResource("8_0t7lm")
@@ -151,7 +28,7 @@ texture = ExtResource("1_6vilu")
 [node name="Terrain" type="TileMapLayer" parent="."]
 position = Vector2(0, -2)
 tile_map_data = PackedByteArray("AAAAAAQAAQAAAAEAAAAAAAUAAQABAAAAAAABAAUAAQABAAAAAAACAAUAAQABAAAAAAACAAQAAQAAAAEAAAABAAQAAQABAAAAAAADAAUAAQABAAAAAAADAAQAAQAAAAEAAAAEAAQAAQAAAAEAAAAFAAUAAQABAAAAAAAEAAUAAQABAAAAAAAFAAQAAQAAAAEAAAAGAAUAAQABAAAAAAAHAAUAAQABAAAAAAAHAAQAAQAAAAEAAAAGAAQAAQABAAAAAAAIAAUAAQABAAAAAAAIAAQAAQAAAAEAAAAGAAMAAQABAAAAAAAGAAIAAQABAAAAAAAGAAEAAQABAAAAAAAGAAAAAQAAAAEAAAD//wQAAQAEAAcAAAD//wMAAQAEAAcAAAD//wIAAQAEAAcAAAD//wEAAQAEAAcAAAD//wAAAQAEAAcAAAD/////AQAEAAcAAAAJAAQAAQAEAAcAAAAJAAMAAQAEAAcAAAAJAAIAAQAEAAcAAAAJAAEAAQAEAAcAAAAJAAAAAQAEAAcAAAAJAP//AQAEAAcAAAABAAIAAQAAAAEAAAABAAMAAQABAAAAAAA=")
-tile_set = SubResource("TileSet_67n3t")
+tile_set = ExtResource("2_vg8f4")
 
 [node name="Player" parent="." instance=ExtResource("2_l1t52")]
 z_index = 5

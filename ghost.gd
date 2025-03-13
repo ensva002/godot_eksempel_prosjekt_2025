@@ -28,11 +28,9 @@ func _physics_process(delta: float) -> void:
 			n *= -1
 		queue_free()
 
-
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
 		emit_signal("player_hurt")
-	
 		
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	if area.is_in_group("coins"):
@@ -43,8 +41,8 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 		damaged = true
 
 func _on_area_2d_body_exited(body: Node2D) -> void:
-		if body.is_in_group("damage"):
-			damaged = false
+	if damaged && !has_damage_areas():
+		damaged = false
 
 func _on_inwall_body_entered(body: Node2D) -> void:
 	if body is TileMapLayer:
@@ -56,3 +54,9 @@ func _on_inwall_body_exited(body: Node2D) -> void:
 	if body is TileMapLayer:
 		$Sprite2D.modulate = Color(1,1,1,0.8)
 		indestructable = false
+
+func has_damage_areas() -> bool:
+	for area in $Area2D.get_overlapping_areas():
+		if area.is_in_group("damage"):
+			return true
+	return false
