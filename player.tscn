@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://3mltdnhpmovc"]
+[gd_scene load_steps=18 format=3 uid="uid://3mltdnhpmovc"]
 
 [ext_resource type="Script" uid="uid://c35l2lx086noa" path="res://character_body_2d.gd" id="1_k75yu"]
 [ext_resource type="Texture2D" uid="uid://cvit7l1i0wmj7" path="res://art/spritesheet_players.png" id="2_xns8f"]
@@ -120,6 +120,9 @@ height = 118.0
 atlas = ExtResource("3_xvtqb")
 region = Rect2(128, 1700, 128, 36)
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_i3pqv"]
+height = 30.3867
+
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 collision_mask = 12
 script = ExtResource("1_k75yu")
@@ -144,3 +147,20 @@ texture_under = SubResource("AtlasTexture_4xw5d")
 texture_progress = SubResource("AtlasTexture_4xw5d")
 tint_under = Color(0, 0, 0, 0)
 tint_progress = Color(1, 1, 1, 0.482353)
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_mask = 400
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(0, -8)
+scale = Vector2(3.015, 3.62)
+shape = SubResource("CapsuleShape2D_i3pqv")
+debug_color = Color(0.976029, 0, 0.414963, 0.42)
+
+[node name="DeathTimer" type="Timer" parent="."]
+wait_time = 2.5
+one_shot = true
+
+[connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
+[connection signal="timeout" from="DeathTimer" to="." method="_on_death_timer_timeout"]

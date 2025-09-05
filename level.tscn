@@ -32,7 +32,7 @@ tile_set = ExtResource("2_vg8f4")
 
 [node name="Player" parent="." instance=ExtResource("2_l1t52")]
 z_index = 5
-position = Vector2(373, 453)
+position = Vector2(183, 188)
 
 [node name="Ghost" parent="." instance=ExtResource("4_dmr7q")]
 position = Vector2(1066, 415)

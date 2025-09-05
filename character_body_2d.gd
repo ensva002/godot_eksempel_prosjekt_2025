@@ -17,8 +17,8 @@ func _ready() -> void:
 	anim = $AnimatedSprite2D
 	charge = $Charge
 	
-	for enemy in get_tree().get_nodes_in_group("enemy"):
-		enemy.connect("player_hurt", Callable(self,"on_player_hurt"))
+	#for enemy in get_tree().get_nodes_in_group("enemy"):
+		#enemy.connect("player_hurt", Callable(self,"on_player_hurt"))
 	
 
 func _physics_process(delta: float) -> void:
@@ -100,4 +100,12 @@ func on_player_hurt():
 	collision_layer =  0
 	velocity.y = -350
 	velocity.x =200*-facing
+
+func _on_hitbox_body_entered(body: Node2D) -> void:
+	on_player_hurt()
+
+func _on_hitbox_area_entered(area: Area2D) -> void:
+	on_player_hurt()
+
+func _on_death_timer_timeout() -> void:
 	
