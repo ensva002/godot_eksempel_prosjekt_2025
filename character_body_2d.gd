@@ -11,6 +11,7 @@ var facing = 1
 var bomb = preload("res://bomb.tscn")
 var charge
 var charging
+var bomb_cooldown = false
 
 func _ready() -> void:
 	anim = $AnimatedSprite2D
@@ -21,7 +22,6 @@ func _ready() -> void:
 	
 
 func _physics_process(delta: float) -> void:
-
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 	if !dead:
@@ -45,27 +45,41 @@ func _physics_process(delta: float) -> void:
 		else:
 			velocity.x = move_toward(velocity.x, 0, SPEED)
 			walking = false
-			
-		if Input.is_action_just_pressed("shift"):
+		
+		if Input.is_action_just_pressed("shift") && !bomb_cooldown:
 			charging = true
-		if charging  && charge.value < 100:
-			charge.value += 1.75
+			charge.tint_under = Color(0,0,0,1)
+		if charging:
+			if charge.value < 100:
+				charge.value += 1.75
+			if charge.value >= 20:
+				charge.tint_progress = Color(1,1,1,1)
+
 			
 		if (Input.is_action_just_released("shift") or charge.value >= 100) && charging:
 			charging = false
+			charge.tint_under = Color(0,0,0,0)
+			
 			if charge.value > 20:
 				var bombInsta = bomb.instantiate()
 				bombInsta.global_position = Vector2(global_position)
 				bombInsta.linear_velocity = Vector2(charge.value*facing,-charge.value)*7
 				get_tree().current_scene.add_child(bombInsta)
-			charge.value = 0
+			charge.value = 100
+			charge.tint_progress = Color(0,0,0,1)
+			bomb_cooldown = true
 			
+			
+		if !charging && bomb_cooldown:
+			charge.value -= 3.5
+			if charge.value <= 0:
+				bomb_cooldown = false
+				charge.value = 0
+				charge.tint_progress = Color(1,1,1,0.5)
 
 	move_and_slide()
 	animationHandler()
 	
-
-
 func animationHandler():
 	if dead:
 		anim.play("hurt")

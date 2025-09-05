@@ -1,6 +1,9 @@
 @tool
 extends Area2D
+## amount of coins needed to open door
 @export var target: int = 0
+## level index or name, leave empty to load next level
+@export var destination: String
 
 func _ready() -> void:
 	$Front/Target.text = str(target)
@@ -18,11 +21,23 @@ func on_score_updated(new_score: int) -> void:
 func _process(delta: float) -> void:
 	if Engine.is_editor_hint():
 		$Front/Target.text = str(target)
+	if Input.is_action_just_pressed("ui_up"):
+		if destination.is_empty():
+			LevelManager.load_next_level()
+		else:
+			if destination.is_valid_int():
+				LevelManager.load_level(int(destination))
+			else:
+				LevelManager.load_level(destination)
+			
 
 
 func _on_body_entered(body: Node2D) -> void:
-	$Label.visible = true
-
+	if body.is_in_group("player"):
+		$Label.visible = true
+		
 
 func _on_body_exited(body: Node2D) -> void:
-	$Label.visible = false
+	if body.is_in_group("player"):
+		$Label.visible = false
+	

@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://bu5p25u1ku0tp"]
 
-[ext_resource type="Script" path="res://explosion.gd" id="1_3p3x4"]
+[ext_resource type="Script" uid="uid://bxm76k6rgo0l1" path="res://explosion.gd" id="1_3p3x4"]
 [ext_resource type="Texture2D" uid="uid://dsjo8d32v85hg" path="res://art/tank_explosion.png" id="1_yfamc"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0kqjw"]

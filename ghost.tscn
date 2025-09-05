@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://d1vholdr0aobt"]
 
-[ext_resource type="Script" path="res://ghost.gd" id="1_j1my0"]
+[ext_resource type="Script" uid="uid://ds5r0e8gf5snx" path="res://ghost.gd" id="1_j1my0"]
 [ext_resource type="Texture2D" uid="uid://bcv2ljqrlbidp" path="res://art/enemies_spritesheet.png" id="1_k1m16"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_u88vp"]
@@ -59,9 +59,9 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_gulym"]
 _data = {
-"RESET": SubResource("Animation_b18yl"),
-"fade": SubResource("Animation_ilalr"),
-"float": SubResource("Animation_nny00")
+&"RESET": SubResource("Animation_b18yl"),
+&"fade": SubResource("Animation_ilalr"),
+&"float": SubResource("Animation_nny00")
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ui8q0"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=17 format=3 uid="uid://3mltdnhpmovc"]
 
-[ext_resource type="Script" path="res://character_body_2d.gd" id="1_k75yu"]
+[ext_resource type="Script" uid="uid://c35l2lx086noa" path="res://character_body_2d.gd" id="1_k75yu"]
 [ext_resource type="Texture2D" uid="uid://cvit7l1i0wmj7" path="res://art/spritesheet_players.png" id="2_xns8f"]
 [ext_resource type="Texture2D" uid="uid://cfx7g5bbn3duh" path="res://art/spritesheet_tiles.png" id="3_xvtqb"]
 
@@ -140,4 +140,7 @@ offset_top = -133.0
 offset_right = 54.0
 offset_bottom = -110.0
 nine_patch_stretch = true
+texture_under = SubResource("AtlasTexture_4xw5d")
 texture_progress = SubResource("AtlasTexture_4xw5d")
+tint_under = Color(0, 0, 0, 0)
+tint_progress = Color(1, 1, 1, 0.482353)

@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://d07oqj5oxr8bd"]
 
 [ext_resource type="PackedScene" uid="uid://i08kbu1h1xev" path="res://coin.tscn" id="1_3by3h"]
-[ext_resource type="Script" path="res://coin_physics.gd" id="1_6o6n1"]
+[ext_resource type="Script" uid="uid://bmgiigp1t8aut" path="res://coin_physics.gd" id="1_6o6n1"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5twqs"]
 radius = 31.0161
